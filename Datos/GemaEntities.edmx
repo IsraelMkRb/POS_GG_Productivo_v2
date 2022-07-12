@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Gema.dbo.empleados.login_dtl' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="empleados_login_dtl">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="userlogin" />
+            <PropertyRef Name="passwordlogin" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="userlogin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwordlogin" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Gema.dbo.empleados.tokens' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="empleados_tokens">
+          <Key>
+            <PropertyRef Name="token" />
+            <PropertyRef Name="time_live" />
+            <PropertyRef Name="active" />
+          </Key>
+          <Property Name="token" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="time_live" Type="date" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="general_Articulo_Modificador_Dtl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Item" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Gema.dbo.general.Articulos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="general_Articulos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Display" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Impuestos" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Precio_Modificable" />
+            <PropertyRef Name="Tiene_Modificadores" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Display" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Impuestos" Type="int" Nullable="false" />
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Precio_Modificable" Type="bit" Nullable="false" />
+          <Property Name="Tiene_Modificadores" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="general_Modificadores">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="item1" />
+            <PropertyRef Name="item2" />
+            <PropertyRef Name="item3" />
+            <PropertyRef Name="item4" />
+            <PropertyRef Name="item5" />
+            <PropertyRef Name="item6" />
+            <PropertyRef Name="item7" />
+            <PropertyRef Name="item8" />
+            <PropertyRef Name="item9" />
+            <PropertyRef Name="item10" />
+            <PropertyRef Name="item11" />
+            <PropertyRef Name="item12" />
+            <PropertyRef Name="item13" />
+            <PropertyRef Name="item14" />
+            <PropertyRef Name="item15" />
+            <PropertyRef Name="item16" />
+            <PropertyRef Name="item17" />
+            <PropertyRef Name="item18" />
+            <PropertyRef Name="Opcional" />
+            <PropertyRef Name="Maximos" />
+            <PropertyRef Name="Minimo" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="item1" Type="int" Nullable="false" />
+          <Property Name="item2" Type="int" Nullable="false" />
+          <Property Name="item3" Type="int" Nullable="false" />
+          <Property Name="item4" Type="int" Nullable="false" />
+          <Property Name="item5" Type="int" Nullable="false" />
+          <Property Name="item6" Type="int" Nullable="false" />
+          <Property Name="item7" Type="int" Nullable="false" />
+          <Property Name="item8" Type="int" Nullable="false" />
+          <Property Name="item9" Type="int" Nullable="false" />
+          <Property Name="item10" Type="int" Nullable="false" />
+          <Property Name="item11" Type="int" Nullable="false" />
+          <Property Name="item12" Type="int" Nullable="false" />
+          <Property Name="item13" Type="int" Nullable="false" />
+          <Property Name="item14" Type="int" Nullable="false" />
+          <Property Name="item15" Type="int" Nullable="false" />
+          <Property Name="item16" Type="int" Nullable="false" />
+          <Property Name="item17" Type="int" Nullable="false" />
+          <Property Name="item18" Type="int" Nullable="false" />
+          <Property Name="Opcional" Type="bit" Nullable="false" />
+          <Property Name="Maximos" Type="int" Nullable="false" />
+          <Property Name="Minimo" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="ActualizaEstadoToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nuevafecha" Type="datetime" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ModificadoresdelArticulo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_item" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID_Mod" Type="int" />
+                <Property Name="Nombre_Mod" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="RegistraToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="fechafin" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="GemaModelStoreContainer">
+          <EntitySet Name="general_Articulo_Modificador_Dtl" EntityType="Self.general_Articulo_Modificador_Dtl" Schema="dbo" Table="general.Articulo_Modificador_Dtl" store:Type="Tables" />
+          <EntitySet Name="empleados_login_dtl" EntityType="Self.empleados_login_dtl" store:Type="Tables" store:Schema="dbo" store:Name="empleados.login_dtl">
+            <DefiningQuery>SELECT 
+    [empleados_login_dtl].[ID] AS [ID], 
+    [empleados_login_dtl].[userlogin] AS [userlogin], 
+    [empleados_login_dtl].[passwordlogin] AS [passwordlogin]
+    FROM [dbo].[empleados.login_dtl] AS [empleados_login_dtl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="empleados_tokens" EntityType="Self.empleados_tokens" store:Type="Tables" store:Schema="dbo" store:Name="empleados.tokens">
+            <DefiningQuery>SELECT 
+    [empleados_tokens].[token] AS [token], 
+    [empleados_tokens].[time_live] AS [time_live], 
+    [empleados_tokens].[active] AS [active]
+    FROM [dbo].[empleados.tokens] AS [empleados_tokens]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="general_Articulos" EntityType="Self.general_Articulos" store:Type="Tables" store:Schema="dbo" store:Name="general.Articulos">
+            <DefiningQuery>SELECT 
+    [general_Articulos].[ID] AS [ID], 
+    [general_Articulos].[Nombre] AS [Nombre], 
+    [general_Articulos].[Display] AS [Display], 
+    [general_Articulos].[Precio] AS [Precio], 
+    [general_Articulos].[Impuestos] AS [Impuestos], 
+    [general_Articulos].[Categoria] AS [Categoria], 
+    [general_Articulos].[Precio_Modificable] AS [Precio_Modificable], 
+    [general_Articulos].[Tiene_Modificadores] AS [Tiene_Modificadores]
+    FROM [dbo].[general.Articulos] AS [general_Articulos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="general_Modificadores" EntityType="Self.general_Modificadores" store:Type="Tables" store:Schema="dbo" store:Name="general.Modificadores">
+            <DefiningQuery>SELECT 
+    [general_Modificadores].[ID] AS [ID], 
+    [general_Modificadores].[Nombre] AS [Nombre], 
+    [general_Modificadores].[item1] AS [item1], 
+    [general_Modificadores].[item2] AS [item2], 
+    [general_Modificadores].[item3] AS [item3], 
+    [general_Modificadores].[item4] AS [item4], 
+    [general_Modificadores].[item5] AS [item5], 
+    [general_Modificadores].[item6] AS [item6], 
+    [general_Modificadores].[item7] AS [item7], 
+    [general_Modificadores].[item8] AS [item8], 
+    [general_Modificadores].[item9] AS [item9], 
+    [general_Modificadores].[item10] AS [item10], 
+    [general_Modificadores].[item11] AS [item11], 
+    [general_Modificadores].[item12] AS [item12], 
+    [general_Modificadores].[item13] AS [item13], 
+    [general_Modificadores].[item14] AS [item14], 
+    [general_Modificadores].[item15] AS [item15], 
+    [general_Modificadores].[item16] AS [item16], 
+    [general_Modificadores].[item17] AS [item17], 
+    [general_Modificadores].[item18] AS [item18], 
+    [general_Modificadores].[Opcional] AS [Opcional], 
+    [general_Modificadores].[Maximos] AS [Maximos], 
+    [general_Modificadores].[Minimo] AS [Minimo]
+    FROM [dbo].[general.Modificadores] AS [general_Modificadores]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="general_Articulo_Modificador_Dtl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Item" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empleados_login_dtl">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="userlogin" />
+            <PropertyRef Name="passwordlogin" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="userlogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwordlogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GemaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="general_Articulo_Modificador_Dtl" EntityType="Self.general_Articulo_Modificador_Dtl" />
+          <EntitySet Name="empleados_login_dtl" EntityType="Self.empleados_login_dtl" />
+          <FunctionImport Name="RegistraToken">
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="fechafin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizaEstadoToken">
+            <Parameter Name="nuevafecha" Mode="In" Type="DateTime" />
+            <Parameter Name="token" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="general_Articulos" EntityType="GemaModel.general_Articulos" />
+          <EntitySet Name="empleados_tokens" EntityType="GemaModel.empleados_tokens" />
+          <EntitySet Name="general_Modificadores" EntityType="GemaModel.general_Modificadores" />
+          <FunctionImport Name="ModificadoresdelArticulo" IsComposable="true" ReturnType="Collection(GemaModel.ModificadoresdelArticulo_Result)">
+            <Parameter Name="ID_item" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="general_Articulos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Display" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Impuestos" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Precio_Modificable" />
+            <PropertyRef Name="Tiene_Modificadores" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Display" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Impuestos" Type="Int32" Nullable="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Modificable" Type="Boolean" Nullable="false" />
+          <Property Name="Tiene_Modificadores" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empleados_tokens">
+          <Key>
+            <PropertyRef Name="token" />
+            <PropertyRef Name="time_live" />
+            <PropertyRef Name="active" />
+          </Key>
+          <Property Name="token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time_live" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="general_Modificadores">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="item1" />
+            <PropertyRef Name="item2" />
+            <PropertyRef Name="item3" />
+            <PropertyRef Name="item4" />
+            <PropertyRef Name="item5" />
+            <PropertyRef Name="item6" />
+            <PropertyRef Name="item7" />
+            <PropertyRef Name="item8" />
+            <PropertyRef Name="item9" />
+            <PropertyRef Name="item10" />
+            <PropertyRef Name="item11" />
+            <PropertyRef Name="item12" />
+            <PropertyRef Name="item13" />
+            <PropertyRef Name="item14" />
+            <PropertyRef Name="item15" />
+            <PropertyRef Name="item16" />
+            <PropertyRef Name="item17" />
+            <PropertyRef Name="item18" />
+            <PropertyRef Name="Opcional" />
+            <PropertyRef Name="Maximos" />
+            <PropertyRef Name="Minimo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item1" Type="Int32" Nullable="false" />
+          <Property Name="item2" Type="Int32" Nullable="false" />
+          <Property Name="item3" Type="Int32" Nullable="false" />
+          <Property Name="item4" Type="Int32" Nullable="false" />
+          <Property Name="item5" Type="Int32" Nullable="false" />
+          <Property Name="item6" Type="Int32" Nullable="false" />
+          <Property Name="item7" Type="Int32" Nullable="false" />
+          <Property Name="item8" Type="Int32" Nullable="false" />
+          <Property Name="item9" Type="Int32" Nullable="false" />
+          <Property Name="item10" Type="Int32" Nullable="false" />
+          <Property Name="item11" Type="Int32" Nullable="false" />
+          <Property Name="item12" Type="Int32" Nullable="false" />
+          <Property Name="item13" Type="Int32" Nullable="false" />
+          <Property Name="item14" Type="Int32" Nullable="false" />
+          <Property Name="item15" Type="Int32" Nullable="false" />
+          <Property Name="item16" Type="Int32" Nullable="false" />
+          <Property Name="item17" Type="Int32" Nullable="false" />
+          <Property Name="item18" Type="Int32" Nullable="false" />
+          <Property Name="Opcional" Type="Boolean" Nullable="false" />
+          <Property Name="Maximos" Type="Int32" Nullable="false" />
+          <Property Name="Minimo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="ModificadoresdelArticulo_Result">
+          <Property Type="Int32" Name="ID_Mod" Nullable="true" />
+          <Property Type="String" Name="Nombre_Mod" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GemaModelStoreContainer" CdmEntityContainer="GemaEntities1">
+          <EntitySetMapping Name="general_Articulo_Modificador_Dtl">
+            <EntityTypeMapping TypeName="GemaModel.general_Articulo_Modificador_Dtl">
+              <MappingFragment StoreEntitySet="general_Articulo_Modificador_Dtl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleados_login_dtl">
+            <EntityTypeMapping TypeName="GemaModel.empleados_login_dtl">
+              <MappingFragment StoreEntitySet="empleados_login_dtl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userlogin" ColumnName="userlogin" />
+                <ScalarProperty Name="passwordlogin" ColumnName="passwordlogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RegistraToken" FunctionName="GemaModel.Store.RegistraToken" />
+          <FunctionImportMapping FunctionImportName="ActualizaEstadoToken" FunctionName="GemaModel.Store.ActualizaEstadoToken" />
+          <EntitySetMapping Name="general_Articulos">
+            <EntityTypeMapping TypeName="GemaModel.general_Articulos">
+              <MappingFragment StoreEntitySet="general_Articulos">
+                <ScalarProperty Name="Tiene_Modificadores" ColumnName="Tiene_Modificadores" />
+                <ScalarProperty Name="Precio_Modificable" ColumnName="Precio_Modificable" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleados_tokens">
+            <EntityTypeMapping TypeName="GemaModel.empleados_tokens">
+              <MappingFragment StoreEntitySet="empleados_tokens">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="time_live" ColumnName="time_live" />
+                <ScalarProperty Name="token" ColumnName="token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="general_Modificadores">
+            <EntityTypeMapping TypeName="GemaModel.general_Modificadores">
+              <MappingFragment StoreEntitySet="general_Modificadores">
+                <ScalarProperty Name="Minimo" ColumnName="Minimo" />
+                <ScalarProperty Name="Maximos" ColumnName="Maximos" />
+                <ScalarProperty Name="Opcional" ColumnName="Opcional" />
+                <ScalarProperty Name="item18" ColumnName="item18" />
+                <ScalarProperty Name="item17" ColumnName="item17" />
+                <ScalarProperty Name="item16" ColumnName="item16" />
+                <ScalarProperty Name="item15" ColumnName="item15" />
+                <ScalarProperty Name="item14" ColumnName="item14" />
+                <ScalarProperty Name="item13" ColumnName="item13" />
+                <ScalarProperty Name="item12" ColumnName="item12" />
+                <ScalarProperty Name="item11" ColumnName="item11" />
+                <ScalarProperty Name="item10" ColumnName="item10" />
+                <ScalarProperty Name="item9" ColumnName="item9" />
+                <ScalarProperty Name="item8" ColumnName="item8" />
+                <ScalarProperty Name="item7" ColumnName="item7" />
+                <ScalarProperty Name="item6" ColumnName="item6" />
+                <ScalarProperty Name="item5" ColumnName="item5" />
+                <ScalarProperty Name="item4" ColumnName="item4" />
+                <ScalarProperty Name="item3" ColumnName="item3" />
+                <ScalarProperty Name="item2" ColumnName="item2" />
+                <ScalarProperty Name="item1" ColumnName="item1" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ModificadoresdelArticulo" FunctionName="GemaModel.Store.ModificadoresdelArticulo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GemaModel.ModificadoresdelArticulo_Result">
+                <ScalarProperty Name="ID_Mod" ColumnName="ID_Mod" />
+                <ScalarProperty Name="Nombre_Mod" ColumnName="Nombre_Mod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
