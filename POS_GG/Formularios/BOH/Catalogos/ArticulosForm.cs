@@ -25,6 +25,29 @@ namespace POS_GG.Formularios.BOH.Catalogos
         }
 
         #region Eventos
+
+        private void precio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || char.IsPunctuation(e.KeyChar) && !precio.Text.Contains("."))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+        private void ID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
         private void Articulos_Load(object sender, EventArgs e)
         {
             //Obtenemos la lista de articulos
@@ -63,18 +86,105 @@ namespace POS_GG.Formularios.BOH.Catalogos
             }
             Herramientas.StopLoadingDialog();
         }
-       
+        private void Indice_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (Indice.CurrentRow != null)
+            {
+                IEnumerable<Datos.general_Articulos> articulo = from item in Negocio.Catalogos.Articulos.Articulos.Get()
+                                                                where item.ID == (int)Indice.CurrentRow.Cells[0].Value
+                                                                select item;
+                foreach (var item in articulo)
+                {
+                    Fill(item);
+                }
+            }
+        }
         private void Cerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void Indice_CurrentCellChanged(object sender, EventArgs e)
+        private void Borrar_Click(object sender, EventArgs e)
         {
-            IEnumerable<Datos.general_Articulos> articulo = from item in Negocio.Catalogos.Articulos.Articulos.Get()
-                                                     where item.ID == (int)Indice.CurrentRow.Cells[0].Value select item;
-            foreach (var item in articulo)
+            DialogResult dialogResult = MessageBox.Show("Desea borrar el registro actual.\nEsta accion no puede ser restaurada",
+                                                            "Cuidado",MessageBoxButtons.YesNo,MessageBoxIcon.Error);
+            if (dialogResult == DialogResult.Yes)
             {
-                Fill(item);
+                Negocio.Catalogos.Articulos.Articulos.Delete(int.Parse(ID.Text));
+                Indice.Rows.Remove(Indice.CurrentRow);
+                Indice.CurrentCell = Indice.Rows[0].Cells[0];
+            }
+        }
+
+        private void Nuevo_Click(object sender, EventArgs e)
+        {
+            Indice.Enabled = Nuevo.Enabled = Borrar.Enabled = false;
+            Datos.general_Articulos articuloNuevo = Negocio.Catalogos.Articulos.Articulos.New();
+            Fill(articuloNuevo);
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            Indice.Enabled = Nuevo.Enabled = Borrar.Enabled = true;
+            //Simulamos el evento como si el usuario hubiese cambiado de celda 
+            Indice_CurrentCellChanged(sender, e);
+        }
+
+        private void Guardar_Click(object sender, EventArgs e)
+        {
+            //Creamos el articulo basado en los datos del formulario
+            Datos.general_Articulos articulo = new Datos.general_Articulos();
+            articulo.ID = int.Parse(ID.Text);
+            articulo.Nombre = nombre.Text;
+            articulo.Display = display.Text;
+            articulo.Precio = decimal.Parse(precio.Text);
+            articulo.Categoria = 0;
+            articulo.Impuestos = 0;
+            articulo.Precio_Modificable = PrecioModificable.Checked;
+            //Verificamos si algun combobox de modificador esta posicionado diferente a <vacio>
+            articulo.Tiene_Modificadores = Modificador1.SelectedIndex > 0 || Modificador2.SelectedIndex > 0
+                                                || Modificador3.SelectedIndex > 0 || Modificador4.SelectedIndex > 0
+                                                || Modificador5.SelectedIndex > 0;
+
+            if (Negocio.Catalogos.Articulos.Articulos.Exists(int.Parse(ID.Text)))
+            {
+                DialogResult dialogResult = MessageBox.Show("Desea sobre escribir el registro",
+                    "Notificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Negocio.Catalogos.Articulos.Articulos.Save(articulo))
+                    {
+                        //actualizamos los modificadores del articulo
+                        for (int i = 0; i < ModificadoresCB.Length; i++)
+                        {
+                            Negocio.Catalogos.Modificadores.Modificadores.SaveModsOf(articulo.ID,ModificadoresCB[i].SelectedIndex);
+                        }
+                        MessageBox.Show("Articulo actualizado");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El error no puedo ser guardado");
+                    }
+                }
+            }
+            else
+            {
+                if (Negocio.Catalogos.Articulos.Articulos.Save(articulo))
+                {
+                    //Registramos los modificadores del articulo
+                    for (int i = 0; i < ModificadoresCB.Length; i++)
+                    {
+                        Negocio.Catalogos.Modificadores.Modificadores.SaveModsOf(articulo.ID, ModificadoresCB[i].SelectedIndex);
+                    }
+                    MessageBox.Show("Articulo registrado");
+                    Fill(articulo);
+                    Indice.Rows.Add(articulo.ID, articulo.Nombre);
+                    Indice.Enabled = Nuevo.Enabled = Borrar.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("El error no puedo ser guardado");
+                }
             }
         }
         #endregion
@@ -94,9 +204,12 @@ namespace POS_GG.Formularios.BOH.Catalogos
             List<Datos.ModificadoresdelArticulo_Result> modificadoresDelArticulo =
                 Negocio.Catalogos.Modificadores.Modificadores.GetModsOf(articulo.ID);
             //Reseteamos todos los combobox en <vacio>
-            for (int c = 0; c < ModificadoresCB.Length; c++)
+            if (Modificador1.Items.Count > 0)
             {
-                ModificadoresCB[c].SelectedIndex = 0;
+                for (int c = 0; c < ModificadoresCB.Length; c++)
+                {
+                    ModificadoresCB[c].SelectedIndex = 0;
+                }
             }
             //Revisamos si el articulo contiene modificadores
             if (modificadoresDelArticulo.Count > 0)
@@ -116,6 +229,8 @@ namespace POS_GG.Formularios.BOH.Catalogos
                 }
             }
         }
+
+
         #endregion
 
     }

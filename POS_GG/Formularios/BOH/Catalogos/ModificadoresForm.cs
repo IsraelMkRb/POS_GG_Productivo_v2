@@ -22,9 +22,9 @@ namespace POS_GG.Formularios.BOH.Catalogos
 
         }
 
-        private void Cerrar_Click(object sender, EventArgs e)
+        private void Cerrar_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+
         }
     }
 }

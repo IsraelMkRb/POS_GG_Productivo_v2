@@ -29,9 +29,12 @@ advertencia 6002: La tabla o vista 'Gema.dbo.empleados.tokens' no tiene definida
           <Property Name="time_live" Type="date" Nullable="false" />
           <Property Name="active" Type="bit" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Gema.dbo.general.Articulo_Modificador_Dtl' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="general_Articulo_Modificador_Dtl">
           <Key>
             <PropertyRef Name="ID" />
+            
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="ID_Item" Type="int" Nullable="false" />
@@ -114,6 +117,23 @@ advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene def
           <Parameter Name="nuevafecha" Type="datetime" Mode="In" />
           <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Borraitem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardaModsOfItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Mod" Type="int" Mode="In" />
+          <Parameter Name="ID_Item" Type="int" Mode="In" />
+        </Function>
+        <Function Name="guardaritem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Display" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+          <Parameter Name="Impuestos" Type="int" Mode="In" />
+          <Parameter Name="Categoria" Type="int" Mode="In" />
+          <Parameter Name="Precio_Modificable" Type="bit" Mode="In" />
+          <Parameter Name="Tiene_Modificadores" Type="bit" Mode="In" />
+        </Function>
         <Function Name="ModificadoresdelArticulo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_item" Type="int" Mode="In" />
           <ReturnType>
@@ -130,7 +150,6 @@ advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene def
           <Parameter Name="fechafin" Type="datetime" Mode="In" />
         </Function>
         <EntityContainer Name="GemaModelStoreContainer">
-          <EntitySet Name="general_Articulo_Modificador_Dtl" EntityType="Self.general_Articulo_Modificador_Dtl" Schema="dbo" Table="general.Articulo_Modificador_Dtl" store:Type="Tables" />
           <EntitySet Name="empleados_login_dtl" EntityType="Self.empleados_login_dtl" store:Type="Tables" store:Schema="dbo" store:Name="empleados.login_dtl">
             <DefiningQuery>SELECT 
     [empleados_login_dtl].[ID] AS [ID], 
@@ -144,6 +163,12 @@ advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene def
     [empleados_tokens].[time_live] AS [time_live], 
     [empleados_tokens].[active] AS [active]
     FROM [dbo].[empleados.tokens] AS [empleados_tokens]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="general_Articulo_Modificador_Dtl" EntityType="Self.general_Articulo_Modificador_Dtl" store:Type="Tables" store:Schema="dbo" store:Name="general.Articulo_Modificador_Dtl">
+            <DefiningQuery>SELECT 
+    [general_Articulo_Modificador_Dtl].[ID] AS [ID], 
+    [general_Articulo_Modificador_Dtl].[ID_Item] AS [ID_Item]
+    FROM [dbo].[general.Articulo_Modificador_Dtl] AS [general_Articulo_Modificador_Dtl]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="general_Articulos" EntityType="Self.general_Articulos" store:Type="Tables" store:Schema="dbo" store:Name="general.Articulos">
             <DefiningQuery>SELECT 
@@ -221,7 +246,24 @@ advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene def
           <EntitySet Name="empleados_tokens" EntityType="GemaModel.empleados_tokens" />
           <EntitySet Name="general_Modificadores" EntityType="GemaModel.general_Modificadores" />
           <FunctionImport Name="ModificadoresdelArticulo" IsComposable="true" ReturnType="Collection(GemaModel.ModificadoresdelArticulo_Result)">
-            <Parameter Name="ID_item" Mode="In" Type="Int32" />
+          <Parameter Name="ID_item" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="guardaritem">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Display" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="Impuestos" Mode="In" Type="Int32" />
+            <Parameter Name="Categoria" Mode="In" Type="Int32" />
+            <Parameter Name="Precio_Modificable" Mode="In" Type="Boolean" />
+            <Parameter Name="Tiene_Modificadores" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Borraitem">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardaModsOfItem">
+            <Parameter Name="ID_Mod" Mode="In" Type="Int32" />
+            <Parameter Name="ID_Item" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="general_Articulos">
@@ -393,6 +435,9 @@ advertencia 6002: La tabla o vista 'Gema.dbo.general.Modificadores' no tiene def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="guardaritem" FunctionName="GemaModel.Store.guardaritem" />
+          <FunctionImportMapping FunctionImportName="Borraitem" FunctionName="GemaModel.Store.Borraitem" />
+          <FunctionImportMapping FunctionImportName="GuardaModsOfItem" FunctionName="GemaModel.Store.GuardaModsOfItem" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

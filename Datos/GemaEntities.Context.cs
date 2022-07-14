@@ -68,5 +68,64 @@ namespace Datos
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ModificadoresdelArticulo_Result>("[GemaEntities1].[ModificadoresdelArticulo](@ID_item)", iD_itemParameter);
         }
+    
+        public virtual int guardaritem(Nullable<int> iD, string nombre, string display, Nullable<decimal> precio, Nullable<int> impuestos, Nullable<int> categoria, Nullable<bool> precio_Modificable, Nullable<bool> tiene_Modificadores)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var displayParameter = display != null ?
+                new ObjectParameter("Display", display) :
+                new ObjectParameter("Display", typeof(string));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            var impuestosParameter = impuestos.HasValue ?
+                new ObjectParameter("Impuestos", impuestos) :
+                new ObjectParameter("Impuestos", typeof(int));
+    
+            var categoriaParameter = categoria.HasValue ?
+                new ObjectParameter("Categoria", categoria) :
+                new ObjectParameter("Categoria", typeof(int));
+    
+            var precio_ModificableParameter = precio_Modificable.HasValue ?
+                new ObjectParameter("Precio_Modificable", precio_Modificable) :
+                new ObjectParameter("Precio_Modificable", typeof(bool));
+    
+            var tiene_ModificadoresParameter = tiene_Modificadores.HasValue ?
+                new ObjectParameter("Tiene_Modificadores", tiene_Modificadores) :
+                new ObjectParameter("Tiene_Modificadores", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("guardaritem", iDParameter, nombreParameter, displayParameter, precioParameter, impuestosParameter, categoriaParameter, precio_ModificableParameter, tiene_ModificadoresParameter);
+        }
+    
+        public virtual int Borraitem(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borraitem", iDParameter);
+        }
+    
+        public virtual int GuardaModsOfItem(Nullable<int> iD_Mod, Nullable<int> iD_Item)
+        {
+            var iD_ModParameter = iD_Mod.HasValue ?
+                new ObjectParameter("ID_Mod", iD_Mod) :
+                new ObjectParameter("ID_Mod", typeof(int));
+    
+            var iD_ItemParameter = iD_Item.HasValue ?
+                new ObjectParameter("ID_Item", iD_Item) :
+                new ObjectParameter("ID_Item", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GuardaModsOfItem", iD_ModParameter, iD_ItemParameter);
+        }
     }
 }

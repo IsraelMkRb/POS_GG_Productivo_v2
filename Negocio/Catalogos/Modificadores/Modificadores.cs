@@ -33,5 +33,12 @@ namespace Negocio.Catalogos.Modificadores
                 return db.ModificadoresdelArticulo(iD_Item).ToList();
             }
         }
+        public static void SaveModsOf(int ID_Item,int IDs_Mods)
+        {
+            using(GemaEntities1 db = new GemaEntities1())
+            {
+                db.GuardaModsOfItem(IDs_Mods, ID_Item);
+            }
+        }
     }
 }

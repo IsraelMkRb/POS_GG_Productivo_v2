@@ -32,7 +32,10 @@ namespace POS_GG.Formularios.BOH.Catalogos
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArticulosForm));
             this.Indice = new System.Windows.Forms.DataGridView();
+            this.ID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormularioArticulos = new System.Windows.Forms.TabControl();
             this.General_pag = new System.Windows.Forms.TabPage();
             this.ID = new System.Windows.Forms.TextBox();
@@ -59,12 +62,11 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.label6 = new System.Windows.Forms.Label();
             this.Modificador1 = new System.Windows.Forms.ComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Guardar = new System.Windows.Forms.Button();
             this.Nuevo = new System.Windows.Forms.Button();
             this.Cerrar = new System.Windows.Forms.Button();
-            this.ID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Borrar = new System.Windows.Forms.Button();
+            this.Cancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Indice)).BeginInit();
             this.FormularioArticulos.SuspendLayout();
             this.General_pag.SuspendLayout();
@@ -84,12 +86,27 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.Name_Column});
             this.Indice.Location = new System.Drawing.Point(9, 8);
             this.Indice.Margin = new System.Windows.Forms.Padding(2);
+            this.Indice.MultiSelect = false;
             this.Indice.Name = "Indice";
             this.Indice.RowTemplate.Height = 24;
             this.Indice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Indice.Size = new System.Drawing.Size(188, 301);
-            this.Indice.TabIndex = 10;
+            this.Indice.TabIndex = 1;
             this.Indice.CurrentCellChanged += new System.EventHandler(this.Indice_CurrentCellChanged);
+            // 
+            // ID_Column
+            // 
+            this.ID_Column.HeaderText = "ID";
+            this.ID_Column.Name = "ID_Column";
+            this.ID_Column.ReadOnly = true;
+            this.ID_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Name_Column
+            // 
+            this.Name_Column.HeaderText = "Name";
+            this.Name_Column.Name = "Name_Column";
+            this.Name_Column.ReadOnly = true;
+            this.Name_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormularioArticulos
             // 
@@ -101,8 +118,8 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.FormularioArticulos.Multiline = true;
             this.FormularioArticulos.Name = "FormularioArticulos";
             this.FormularioArticulos.SelectedIndex = 0;
-            this.FormularioArticulos.Size = new System.Drawing.Size(383, 306);
-            this.FormularioArticulos.TabIndex = 0;
+            this.FormularioArticulos.Size = new System.Drawing.Size(768, 354);
+            this.FormularioArticulos.TabIndex = 6;
             // 
             // General_pag
             // 
@@ -123,7 +140,7 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.General_pag.Margin = new System.Windows.Forms.Padding(2);
             this.General_pag.Name = "General_pag";
             this.General_pag.Padding = new System.Windows.Forms.Padding(2);
-            this.General_pag.Size = new System.Drawing.Size(375, 280);
+            this.General_pag.Size = new System.Drawing.Size(760, 328);
             this.General_pag.TabIndex = 0;
             this.General_pag.Text = "General";
             this.General_pag.Paint += new System.Windows.Forms.PaintEventHandler(this.General_pag_Paint);
@@ -133,9 +150,11 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ID.Location = new System.Drawing.Point(10, 74);
             this.ID.Margin = new System.Windows.Forms.Padding(2);
+            this.ID.MaxLength = 25;
             this.ID.Name = "ID";
             this.ID.Size = new System.Drawing.Size(275, 20);
             this.ID.TabIndex = 2;
+            this.ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ID_KeyPress);
             // 
             // label12
             // 
@@ -171,6 +190,7 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.precio.Name = "precio";
             this.precio.Size = new System.Drawing.Size(275, 20);
             this.precio.TabIndex = 5;
+            this.precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precio_KeyPress);
             // 
             // label4
             // 
@@ -188,6 +208,7 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.display.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.display.Location = new System.Drawing.Point(8, 151);
             this.display.Margin = new System.Windows.Forms.Padding(2);
+            this.display.MaxLength = 15;
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(275, 20);
             this.display.TabIndex = 4;
@@ -208,6 +229,7 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nombre.Location = new System.Drawing.Point(8, 112);
             this.nombre.Margin = new System.Windows.Forms.Padding(2);
+            this.nombre.MaxLength = 25;
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(275, 20);
             this.nombre.TabIndex = 3;
@@ -384,77 +406,97 @@ namespace POS_GG.Formularios.BOH.Catalogos
             this.tabPage1.Text = "Receta";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // Guardar
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(206, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 32);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Borrar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(322, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 32);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Guardar.BackColor = System.Drawing.Color.White;
+            this.Guardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Guardar.Image")));
+            this.Guardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Guardar.Location = new System.Drawing.Point(322, 12);
+            this.Guardar.Name = "Guardar";
+            this.Guardar.Size = new System.Drawing.Size(110, 32);
+            this.Guardar.TabIndex = 3;
+            this.Guardar.Text = "Guardar";
+            this.Guardar.UseVisualStyleBackColor = false;
+            this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
             // Nuevo
             // 
             this.Nuevo.BackColor = System.Drawing.Color.White;
-            this.Nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Nuevo.Image = global::POS_GG.Properties.Resources.add_icon2;
+            this.Nuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Nuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nuevo.Image = ((System.Drawing.Image)(resources.GetObject("Nuevo.Image")));
             this.Nuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Nuevo.Location = new System.Drawing.Point(438, 12);
             this.Nuevo.Name = "Nuevo";
             this.Nuevo.Size = new System.Drawing.Size(110, 32);
-            this.Nuevo.TabIndex = 14;
+            this.Nuevo.TabIndex = 4;
             this.Nuevo.Text = "Nuevo";
             this.Nuevo.UseVisualStyleBackColor = false;
+            this.Nuevo.Click += new System.EventHandler(this.Nuevo_Click);
             // 
             // Cerrar
             // 
             this.Cerrar.BackColor = System.Drawing.Color.White;
-            this.Cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Cerrar.Image = global::POS_GG.Properties.Resources.close_icon;
+            this.Cerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cerrar.Image = ((System.Drawing.Image)(resources.GetObject("Cerrar.Image")));
             this.Cerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Cerrar.Location = new System.Drawing.Point(554, 12);
+            this.Cerrar.Location = new System.Drawing.Point(670, 12);
             this.Cerrar.Name = "Cerrar";
             this.Cerrar.Size = new System.Drawing.Size(110, 32);
-            this.Cerrar.TabIndex = 13;
+            this.Cerrar.TabIndex = 5;
             this.Cerrar.Text = "Cerrar";
             this.Cerrar.UseVisualStyleBackColor = false;
             this.Cerrar.Click += new System.EventHandler(this.Cerrar_Click);
             // 
-            // ID_Column
+            // Borrar
             // 
-            this.ID_Column.HeaderText = "ID";
-            this.ID_Column.Name = "ID_Column";
-            this.ID_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Borrar.BackColor = System.Drawing.Color.White;
+            this.Borrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Borrar.Image = ((System.Drawing.Image)(resources.GetObject("Borrar.Image")));
+            this.Borrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Borrar.Location = new System.Drawing.Point(206, 12);
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Size = new System.Drawing.Size(110, 32);
+            this.Borrar.TabIndex = 2;
+            this.Borrar.Text = "Borrar";
+            this.Borrar.UseVisualStyleBackColor = false;
+            this.Borrar.Click += new System.EventHandler(this.Borrar_Click);
             // 
-            // Name_Column
+            // Cancelar
             // 
-            this.Name_Column.HeaderText = "Name";
-            this.Name_Column.Name = "Name_Column";
-            this.Name_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cancelar.BackColor = System.Drawing.Color.White;
+            this.Cancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Cancelar.Image")));
+            this.Cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Cancelar.Location = new System.Drawing.Point(554, 12);
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Size = new System.Drawing.Size(110, 32);
+            this.Cancelar.TabIndex = 7;
+            this.Cancelar.Text = "  Cancelar";
+            this.Cancelar.UseVisualStyleBackColor = false;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // ArticulosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(784, 366);
+            this.ClientSize = new System.Drawing.Size(1023, 457);
+            this.Controls.Add(this.Cancelar);
+            this.Controls.Add(this.Borrar);
             this.Controls.Add(this.Nuevo);
             this.Controls.Add(this.Cerrar);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Guardar);
             this.Controls.Add(this.FormularioArticulos);
             this.Controls.Add(this.Indice);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -534,11 +576,12 @@ namespace POS_GG.Formularios.BOH.Catalogos
         private System.Windows.Forms.ComboBox Modificador1;
         private TextBox ID;
         private Label label12;
-        private Button button1;
-        private Button button2;
+        private Button Guardar;
         private Button Cerrar;
         private Button Nuevo;
+        private Button Borrar;
         private DataGridViewTextBoxColumn ID_Column;
         private DataGridViewTextBoxColumn Name_Column;
+        private Button Cancelar;
     }
 }
