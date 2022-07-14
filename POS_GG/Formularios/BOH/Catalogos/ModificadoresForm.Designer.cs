@@ -37,36 +37,35 @@
             this.Nuevo = new System.Windows.Forms.Button();
             this.Cerrar = new System.Windows.Forms.Button();
             this.Guardar = new System.Windows.Forms.Button();
-            this.FormularioArticulos = new System.Windows.Forms.TabControl();
             this.General_pag = new System.Windows.Forms.TabPage();
-            this.ID = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.PrecioModificable = new System.Windows.Forms.CheckBox();
-            this.precio = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.display = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Mod_pag = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.Modificador5 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Modificador4 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Modificador3 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Modificador2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Modificador1 = new System.Windows.Forms.ComboBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nombre = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.display = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.precio = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.FormularioArticulos = new System.Windows.Forms.TabControl();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.indice)).BeginInit();
-            this.FormularioArticulos.SuspendLayout();
             this.General_pag.SuspendLayout();
-            this.Mod_pag.SuspendLayout();
+            this.FormularioArticulos.SuspendLayout();
             this.SuspendLayout();
             // 
             // indice
@@ -170,31 +169,31 @@
             this.Guardar.Text = "Guardar";
             this.Guardar.UseVisualStyleBackColor = false;
             // 
-            // FormularioArticulos
-            // 
-            this.FormularioArticulos.Controls.Add(this.General_pag);
-            this.FormularioArticulos.Controls.Add(this.Mod_pag);
-            this.FormularioArticulos.Controls.Add(this.tabPage1);
-            this.FormularioArticulos.Location = new System.Drawing.Point(338, 49);
-            this.FormularioArticulos.Margin = new System.Windows.Forms.Padding(2);
-            this.FormularioArticulos.Multiline = true;
-            this.FormularioArticulos.Name = "FormularioArticulos";
-            this.FormularioArticulos.SelectedIndex = 0;
-            this.FormularioArticulos.Size = new System.Drawing.Size(574, 306);
-            this.FormularioArticulos.TabIndex = 13;
-            // 
             // General_pag
             // 
             this.General_pag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.General_pag.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.General_pag.Controls.Add(this.comboBox1);
+            this.General_pag.Controls.Add(this.label14);
             this.General_pag.Controls.Add(this.ID);
-            this.General_pag.Controls.Add(this.label12);
-            this.General_pag.Controls.Add(this.PrecioModificable);
             this.General_pag.Controls.Add(this.precio);
-            this.General_pag.Controls.Add(this.label4);
             this.General_pag.Controls.Add(this.display);
-            this.General_pag.Controls.Add(this.label3);
             this.General_pag.Controls.Add(this.nombre);
+            this.General_pag.Controls.Add(this.label13);
+            this.General_pag.Controls.Add(this.button11);
+            this.General_pag.Controls.Add(this.button10);
+            this.General_pag.Controls.Add(this.button9);
+            this.General_pag.Controls.Add(this.button8);
+            this.General_pag.Controls.Add(this.button7);
+            this.General_pag.Controls.Add(this.button6);
+            this.General_pag.Controls.Add(this.button5);
+            this.General_pag.Controls.Add(this.button4);
+            this.General_pag.Controls.Add(this.button3);
+            this.General_pag.Controls.Add(this.button2);
+            this.General_pag.Controls.Add(this.button1);
+            this.General_pag.Controls.Add(this.label12);
+            this.General_pag.Controls.Add(this.label4);
+            this.General_pag.Controls.Add(this.label3);
             this.General_pag.Controls.Add(this.label2);
             this.General_pag.Controls.Add(this.label1);
             this.General_pag.Controls.Add(this.label5);
@@ -202,107 +201,19 @@
             this.General_pag.Margin = new System.Windows.Forms.Padding(2);
             this.General_pag.Name = "General_pag";
             this.General_pag.Padding = new System.Windows.Forms.Padding(2);
-            this.General_pag.Size = new System.Drawing.Size(566, 280);
+            this.General_pag.Size = new System.Drawing.Size(566, 337);
             this.General_pag.TabIndex = 0;
             this.General_pag.Text = "General";
             // 
-            // ID
+            // label5
             // 
-            this.ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ID.Location = new System.Drawing.Point(10, 74);
-            this.ID.Margin = new System.Windows.Forms.Padding(2);
-            this.ID.MaxLength = 25;
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(275, 20);
-            this.ID.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label12.Location = new System.Drawing.Point(8, 56);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 13);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "ID(*)";
-            // 
-            // PrecioModificable
-            // 
-            this.PrecioModificable.AutoSize = true;
-            this.PrecioModificable.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.PrecioModificable.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.PrecioModificable.FlatAppearance.BorderSize = 9;
-            this.PrecioModificable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.PrecioModificable.Location = new System.Drawing.Point(10, 219);
-            this.PrecioModificable.Margin = new System.Windows.Forms.Padding(2);
-            this.PrecioModificable.Name = "PrecioModificable";
-            this.PrecioModificable.Size = new System.Drawing.Size(119, 18);
-            this.PrecioModificable.TabIndex = 6;
-            this.PrecioModificable.Text = "Precio Modificable";
-            this.PrecioModificable.UseVisualStyleBackColor = true;
-            // 
-            // precio
-            // 
-            this.precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.precio.Location = new System.Drawing.Point(8, 196);
-            this.precio.Margin = new System.Windows.Forms.Padding(2);
-            this.precio.Name = "precio";
-            this.precio.Size = new System.Drawing.Size(275, 20);
-            this.precio.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.Location = new System.Drawing.Point(7, 180);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Precio(*)";
-            // 
-            // display
-            // 
-            this.display.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.display.Location = new System.Drawing.Point(8, 151);
-            this.display.Margin = new System.Windows.Forms.Padding(2);
-            this.display.MaxLength = 15;
-            this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(275, 20);
-            this.display.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label3.Location = new System.Drawing.Point(6, 135);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Display(*)";
-            // 
-            // nombre
-            // 
-            this.nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nombre.Location = new System.Drawing.Point(8, 112);
-            this.nombre.Margin = new System.Windows.Forms.Padding(2);
-            this.nombre.MaxLength = 25;
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(275, 20);
-            this.nombre.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label2.Location = new System.Drawing.Point(6, 94);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre(*)";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 33);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "___________";
             // 
             // label1
             // 
@@ -315,155 +226,228 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "General";
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 33);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "___________";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label2.Location = new System.Drawing.Point(6, 94);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre(*)";
             // 
-            // Mod_pag
+            // nombre
             // 
-            this.Mod_pag.BackColor = System.Drawing.Color.White;
-            this.Mod_pag.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Mod_pag.Controls.Add(this.label11);
-            this.Mod_pag.Controls.Add(this.Modificador5);
-            this.Mod_pag.Controls.Add(this.label10);
-            this.Mod_pag.Controls.Add(this.Modificador4);
-            this.Mod_pag.Controls.Add(this.label9);
-            this.Mod_pag.Controls.Add(this.Modificador3);
-            this.Mod_pag.Controls.Add(this.label8);
-            this.Mod_pag.Controls.Add(this.Modificador2);
-            this.Mod_pag.Controls.Add(this.label7);
-            this.Mod_pag.Controls.Add(this.label6);
-            this.Mod_pag.Controls.Add(this.Modificador1);
-            this.Mod_pag.Location = new System.Drawing.Point(4, 22);
-            this.Mod_pag.Margin = new System.Windows.Forms.Padding(2);
-            this.Mod_pag.Name = "Mod_pag";
-            this.Mod_pag.Padding = new System.Windows.Forms.Padding(2);
-            this.Mod_pag.Size = new System.Drawing.Size(375, 280);
-            this.Mod_pag.TabIndex = 1;
-            this.Mod_pag.Text = "Modificadores";
+            this.nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nombre.Location = new System.Drawing.Point(8, 112);
+            this.nombre.Margin = new System.Windows.Forms.Padding(2);
+            this.nombre.MaxLength = 25;
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(275, 20);
+            this.nombre.TabIndex = 3;
             // 
-            // label11
+            // label3
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 239);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Modificador 5";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label3.Location = new System.Drawing.Point(6, 135);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Maximo(*)";
             // 
-            // Modificador5
+            // display
             // 
-            this.Modificador5.FormattingEnabled = true;
-            this.Modificador5.Location = new System.Drawing.Point(13, 255);
-            this.Modificador5.Margin = new System.Windows.Forms.Padding(2);
-            this.Modificador5.Name = "Modificador5";
-            this.Modificador5.Size = new System.Drawing.Size(163, 21);
-            this.Modificador5.TabIndex = 9;
+            this.display.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.display.Location = new System.Drawing.Point(8, 151);
+            this.display.Margin = new System.Windows.Forms.Padding(2);
+            this.display.MaxLength = 15;
+            this.display.Name = "display";
+            this.display.Size = new System.Drawing.Size(275, 20);
+            this.display.TabIndex = 4;
             // 
-            // label10
+            // label4
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 191);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Modificador 4";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label4.Location = new System.Drawing.Point(7, 180);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Minimo(*)";
             // 
-            // Modificador4
+            // precio
             // 
-            this.Modificador4.FormattingEnabled = true;
-            this.Modificador4.Location = new System.Drawing.Point(11, 207);
-            this.Modificador4.Margin = new System.Windows.Forms.Padding(2);
-            this.Modificador4.Name = "Modificador4";
-            this.Modificador4.Size = new System.Drawing.Size(163, 21);
-            this.Modificador4.TabIndex = 7;
+            this.precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.precio.Location = new System.Drawing.Point(8, 196);
+            this.precio.Margin = new System.Windows.Forms.Padding(2);
+            this.precio.Name = "precio";
+            this.precio.Size = new System.Drawing.Size(275, 20);
+            this.precio.TabIndex = 5;
             // 
-            // label9
+            // label12
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 142);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Modificador 3";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label12.Location = new System.Drawing.Point(8, 56);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(28, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "ID(*)";
             // 
-            // Modificador3
+            // ID
             // 
-            this.Modificador3.FormattingEnabled = true;
-            this.Modificador3.Location = new System.Drawing.Point(10, 158);
-            this.Modificador3.Margin = new System.Windows.Forms.Padding(2);
-            this.Modificador3.Name = "Modificador3";
-            this.Modificador3.Size = new System.Drawing.Size(163, 21);
-            this.Modificador3.TabIndex = 5;
+            this.ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ID.Location = new System.Drawing.Point(10, 74);
+            this.ID.Margin = new System.Windows.Forms.Padding(2);
+            this.ID.MaxLength = 25;
+            this.ID.Name = "ID";
+            this.ID.Size = new System.Drawing.Size(275, 20);
+            this.ID.TabIndex = 2;
             // 
-            // label8
+            // button1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 94);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Modificador 2";
+            this.button1.Location = new System.Drawing.Point(321, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(68, 38);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // Modificador2
+            // button2
             // 
-            this.Modificador2.FormattingEnabled = true;
-            this.Modificador2.Location = new System.Drawing.Point(8, 110);
-            this.Modificador2.Margin = new System.Windows.Forms.Padding(2);
-            this.Modificador2.Name = "Modificador2";
-            this.Modificador2.Size = new System.Drawing.Size(163, 21);
-            this.Modificador2.TabIndex = 3;
+            this.button2.Location = new System.Drawing.Point(395, 98);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(68, 38);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // button3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 46);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Modificador 1";
+            this.button3.Location = new System.Drawing.Point(469, 98);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(68, 38);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // button4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 11);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Modificadores";
+            this.button4.Location = new System.Drawing.Point(321, 142);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(68, 38);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // Modificador1
+            // button5
             // 
-            this.Modificador1.FormattingEnabled = true;
-            this.Modificador1.Location = new System.Drawing.Point(8, 63);
-            this.Modificador1.Margin = new System.Windows.Forms.Padding(2);
-            this.Modificador1.Name = "Modificador1";
-            this.Modificador1.Size = new System.Drawing.Size(163, 21);
-            this.Modificador1.TabIndex = 0;
+            this.button5.Location = new System.Drawing.Point(395, 142);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(68, 38);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // button6
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(375, 280);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Receta";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.button6.Location = new System.Drawing.Point(469, 142);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(68, 38);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(321, 186);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(68, 38);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(395, 186);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(68, 38);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(469, 186);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(68, 38);
+            this.button9.TabIndex = 18;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(321, 227);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(216, 27);
+            this.button10.TabIndex = 19;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(321, 67);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(216, 27);
+            this.button11.TabIndex = 20;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label13.Location = new System.Drawing.Point(495, 24);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Articulo";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label14.Location = new System.Drawing.Point(410, 261);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Seccion 1";
+            // 
+            // FormularioArticulos
+            // 
+            this.FormularioArticulos.Controls.Add(this.General_pag);
+            this.FormularioArticulos.Location = new System.Drawing.Point(338, 49);
+            this.FormularioArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.FormularioArticulos.Multiline = true;
+            this.FormularioArticulos.Name = "FormularioArticulos";
+            this.FormularioArticulos.SelectedIndex = 0;
+            this.FormularioArticulos.Size = new System.Drawing.Size(574, 363);
+            this.FormularioArticulos.TabIndex = 13;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(321, 40);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(216, 21);
+            this.comboBox1.TabIndex = 24;
             // 
             // ModificadoresForm
             // 
@@ -481,11 +465,9 @@
             this.Text = "ModificadoresForm";
             this.Load += new System.EventHandler(this.ModificadoresForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.indice)).EndInit();
-            this.FormularioArticulos.ResumeLayout(false);
             this.General_pag.ResumeLayout(false);
             this.General_pag.PerformLayout();
-            this.Mod_pag.ResumeLayout(false);
-            this.Mod_pag.PerformLayout();
+            this.FormularioArticulos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -500,31 +482,31 @@
         private System.Windows.Forms.Button Nuevo;
         private System.Windows.Forms.Button Cerrar;
         private System.Windows.Forms.Button Guardar;
-        private System.Windows.Forms.TabControl FormularioArticulos;
         private System.Windows.Forms.TabPage General_pag;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox ID;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox PrecioModificable;
         private System.Windows.Forms.TextBox precio;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox display;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TabPage Mod_pag;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox Modificador5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox Modificador4;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox Modificador3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox Modificador2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox Modificador1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl FormularioArticulos;
     }
 }
